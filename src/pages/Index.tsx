@@ -127,7 +127,7 @@ const Index = () => {
             transition={{ duration: 0.7 }}
           >
             <span className="inline-block bg-accent/20 text-accent-foreground text-xs font-bold font-heading uppercase tracking-wider px-3 py-1 rounded-full mb-4">
-              🚀 #1 Web Agency Indonesia
+              🚀 Web Agency Terpercaya
             </span>
             <h1 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6">
               Jasa Website Professional yang Fokus{" "}
