@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Globe, Send } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -58,7 +58,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex gap-3 mt-4">
-              {[Instagram, Linkedin, MessageCircle].map((Icon, i) => (
+              {[Globe, Send, MessageCircle].map((Icon, i) => (
                 <a key={i} href="#" className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors">
                   <Icon size={16} />
                 </a>
