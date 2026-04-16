@@ -3,6 +3,7 @@ import { ArrowRight, Star, TrendingUp, Users, Zap, BarChart3, Target, CheckCircl
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import SectionHeading from "@/components/SectionHeading";
+import FloatingElements from "@/components/FloatingElements";
 import heroPerson from "@/assets/hero-person.png";
 import portfolio1 from "@/assets/portfolio-1.jpg";
 import portfolio2 from "@/assets/portfolio-2.jpg";
@@ -17,9 +18,9 @@ const portfolioItems = [
 ];
 
 const metrics = [
-  { icon: TrendingUp, value: "340%", label: "Peningkatan Traffic" },
-  { icon: Target, value: "5.2x", label: "Return on Ad Spend" },
-  { icon: BarChart3, value: "89%", label: "Conversion Rate Up" },
+  { icon: TrendingUp, value: "340%", label: "Peningkatan Traffic", detail: "575 Ribu dapat 83 Leads" },
+  { icon: Target, value: "5.2x", label: "Return on Ad Spend", detail: "1.7 Juta Dapat Omset 2.8 Juta" },
+  { icon: BarChart3, value: "89%", label: "Conversion Rate Up", detail: "Landing Page Optimized" },
 ];
 
 const pricingTiers = [
@@ -87,8 +88,13 @@ const Index = () => {
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.2 }} className="flex justify-center">
             <div className="relative">
+              {/* Yellow abstract background shape */}
+              <div className="absolute inset-0 -inset-x-8 -inset-y-4">
+                <div className="w-full h-full bg-accent/20 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] blur-sm" />
+              </div>
               <div className="absolute -inset-4 bg-primary/10 rounded-full blur-3xl" />
               <img src={heroPerson} alt="Web developer" width={500} height={600} className="relative z-10 drop-shadow-2xl" />
+              <FloatingElements />
             </div>
           </motion.div>
         </div>
@@ -108,8 +114,15 @@ const Index = () => {
                 transition={{ delay: i * 0.1 }}
                 className="group bg-card rounded-xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-300"
               >
-                <div className="overflow-hidden">
-                  <img src={item.img} alt={item.title} loading="lazy" width={768} height={512} className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="overflow-hidden relative">
+                  <img src={item.img} alt={item.title} loading="lazy" width={768} height={512} className="w-full h-48 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                  {/* Gradient overlay to mask any AI text artifacts */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
+                  {/* Clean label overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-card to-transparent">
+                    <span className="text-xs font-medium text-primary">{item.category}</span>
+                    <h3 className="font-heading font-bold text-foreground text-sm">{item.title}</h3>
+                  </div>
                 </div>
                 <div className="p-4">
                   <span className="text-xs font-medium text-primary">{item.category}</span>
@@ -128,7 +141,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Metrics */}
+      {/* Metrics - All HTML text, no image backgrounds */}
       <section className="py-20 bg-primary-dark">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -143,11 +156,16 @@ const Index = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="bg-primary-foreground/10 backdrop-blur rounded-xl p-8 text-center border border-primary-foreground/10"
+                className="bg-card rounded-xl p-8 text-center border border-border"
               >
-                <m.icon className="mx-auto mb-4 text-accent" size={40} />
-                <div className="font-heading font-extrabold text-4xl text-primary-foreground mb-2">{m.value}</div>
-                <div className="text-primary-foreground/70 text-sm">{m.label}</div>
+                <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <m.icon className="text-primary" size={28} />
+                </div>
+                <div className="font-heading font-extrabold text-4xl text-foreground mb-2">{m.value}</div>
+                <div className="text-muted-foreground text-sm font-medium mb-3">{m.label}</div>
+                <div className="text-xs text-primary font-heading font-bold bg-primary/10 rounded-full px-3 py-1 inline-block">
+                  {m.detail}
+                </div>
               </motion.div>
             ))}
           </div>
