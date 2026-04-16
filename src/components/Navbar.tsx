@@ -20,7 +20,10 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-1 font-heading font-extrabold text-xl">
+        <Link
+          to="/"
+          className="flex items-center font-heading font-extrabold text-xl"
+        >
           <span className="text-foreground">webdev</span>
           <span className="text-accent">studio</span>
           <span className="text-foreground">.id</span>
@@ -32,7 +35,9 @@ const Navbar = () => {
               key={link.path}
               to={link.path}
               className={`text-sm font-medium transition-colors hover:text-primary ${
-                location.pathname === link.path ? "text-primary" : "text-muted-foreground"
+                location.pathname === link.path
+                  ? "text-primary"
+                  : "text-muted-foreground"
               }`}
             >
               {link.label}
@@ -41,12 +46,21 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:block">
-          <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-heading font-bold accent-shadow">
-            LET'S TALK
-          </Button>
+          <a
+            href="https://wa.me/+6289695914075"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-heading font-bold accent-shadow">
+              LET'S TALK
+            </Button>
+          </a>
         </div>
 
-        <button className="lg:hidden text-foreground" onClick={() => setOpen(!open)}>
+        <button
+          className="lg:hidden text-foreground"
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -74,9 +88,15 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-heading font-bold mt-2">
-                LET'S TALK
-              </Button>
+              <a
+                href="https://wa.me/+6289695914075"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-accent text-accent-foreground hover:bg-accent/90 font-heading font-bold mt-2">
+                  LET'S TALK
+                </Button>
+              </a>
             </div>
           </motion.div>
         )}
